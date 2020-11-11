@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <h3 class="text-center mt-4">Latest news from all around the world</h3>
+    <h3 class="text-center mt-4 mainHeading">
+      Latest news about Bitcoin from all around the world
+    </h3>
     <v-row>
       <v-col
         v-for="article in info"
@@ -9,7 +11,12 @@
         height="100%"
         :key="article.title"
       >
-        <NewCard :title="article.title" :imgURL="article.urlToImage" />
+        <NewCard
+          :title="article.title"
+          :imgURL="article.urlToImage"
+          :content="article.content"
+          :url="article.url"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -32,7 +39,7 @@ export default {
   mounted() {
     axios
       .get(
-        'http://newsapi.org/v2/everything?q=bitcoin&from=2020-10-11&sortBy=publishedAt&apiKey=da1bf487186b48bea0ccbcc4c336926b'
+        `http://newsapi.org/v2/everything?q=bitcoin&from=${this.currentDay()}&sortBy=publishedAt&apiKey=da1bf487186b48bea0ccbcc4c336926b`
       )
       .then(response => (this.info = response.data.articles))
   },
@@ -40,6 +47,17 @@ export default {
     cardTitle() {
       return this.info.map(i => i.title.slice(0, 50) + '...')
     }
+  },
+  methods: {
+    currentDay: function() {
+      return new Date().toISOString().split('T')[0]
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.mainHeading {
+  font-size: 35px;
+}
+</style>

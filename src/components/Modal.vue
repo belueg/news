@@ -3,26 +3,16 @@
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="500">
         <v-card>
-          <v-card-title
-            class="headline grey lighten-2 d-flex justify-space-between"
-          >
-            <h3>Privacy Policy</h3>
+          <v-card-title class="headline blue lighten-2 d-flex justify-end">
             <v-btn color="primary" text @click="$parent.dialog = false">
               X
             </v-btn>
+            <h3 class="Modal-title">{{ title }}</h3>
           </v-card-title>
 
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          <v-card-text class="Modal-content">
+            {{ content }}
           </v-card-text>
-
-          <v-divider></v-divider>
 
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -37,12 +27,24 @@
 export default {
   name: 'Modal',
   props: {
-    dialog: Boolean
+    dialog: Boolean,
+    title: String,
+    content: String
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .Modal {
+  &-title {
+    font-size: 18px;
+    margin: 10px;
+    text-align: center;
+  }
+
+  &-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 </style>

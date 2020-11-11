@@ -1,6 +1,6 @@
 <template>
   <div class="CardNew">
-    <v-card class="mx-auto" height="436px" max-width="344">
+    <v-card class="mx-auto" height="auto" max-width="344">
       <v-img :src="imgURL" height="200px"></v-img>
 
       <v-card-title>
@@ -11,7 +11,7 @@
 
       <v-card-actions>
         <v-btn color="orange lighten-2" @click="dialog = true" text>
-          Read
+          PREVIEW
         </v-btn>
 
         <v-spacer></v-spacer>
@@ -25,17 +25,14 @@
         <div v-show="show">
           <v-divider></v-divider>
 
-          <v-card-text>
-            I'm a thing. But, like most politicians, he promised more than he
-            could deliver. You won't have time for sleeping, soldier, not with
-            all the bed making you'll be doing. Then we'll go with that data
-            file! Hey, you add a one and two zeros to that or we walk! You're
-            going to do his laundry? I've got to find a way to escape.
+          <v-card-text height="auto">
+            Link:
+            <a :href="url" target="_blank">{{ url }}</a>
           </v-card-text>
         </div>
       </v-expand-transition>
     </v-card>
-    <Modal :dialog="dialog" />
+    <Modal :dialog="dialog" :title="title" :content="content" />
   </div>
 </template>
 
@@ -53,7 +50,9 @@ export default {
   }),
   props: {
     title: String,
-    imgURL: String
+    imgURL: String,
+    content: String,
+    url: String
   },
   filters: {
     max40Letters(value) {
@@ -63,4 +62,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.CardNew {
+  .hideOverflow {
+    overflow: hidden;
+  }
+}
+</style>
