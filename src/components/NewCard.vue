@@ -1,16 +1,16 @@
 <template>
   <div class="CardNew">
-    <v-card class="mx-auto" max-width="344">
-      <v-img src={} height="200px"></v-img>
+    <v-card class="mx-auto" height="436px" max-width="344">
+      <v-img :src="imgURL" height="200px"></v-img>
 
       <v-card-title>
-        {{ title }}
+        {{ title | max40Letters }}
       </v-card-title>
 
       <v-card-subtitle> </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="orange lighten-2" text>
+        <v-btn color="orange lighten-2" @click="dialog = true" text>
           Read
         </v-btn>
 
@@ -35,18 +35,30 @@
         </div>
       </v-expand-transition>
     </v-card>
+    <Modal :dialog="dialog" />
   </div>
 </template>
 
 <script>
+import Modal from '@/components/Modal'
+
 export default {
   name: 'NewCard',
+  components: {
+    Modal
+  },
   data: () => ({
-    show: false
+    show: false,
+    dialog: false
   }),
   props: {
     title: String,
     imgURL: String
+  },
+  filters: {
+    max40Letters(value) {
+      return value.slice(0, 60) + '...'
+    }
   }
 }
 </script>
