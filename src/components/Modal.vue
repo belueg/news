@@ -25,13 +25,13 @@
 
 <script>
 export default {
-  name: 'Modal',
+  name: "Modal",
   props: {
     dialog: Boolean,
     title: String,
     content: String
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

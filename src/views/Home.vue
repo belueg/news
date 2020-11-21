@@ -23,6 +23,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 // @ is an alias to /src
 import axios from 'axios'
 import NewCard from '@/components/NewCard.vue'
@@ -39,9 +41,11 @@ export default {
   mounted() {
     axios
       .get(
-        `http://newsapi.org/v2/everything?q=bitcoin&from=${this.currentDay()}&sortBy=publishedAt&apiKey=da1bf487186b48bea0ccbcc4c336926b`
+        `http://newsapi.org/v2/everything?q=bitcoin&from=4${this.currentDay()}&sortBy=publishedAt&apiKey=da1bf487186b48bea0ccbcc4c336926b`
       )
       .then(response => (this.info = response.data.articles))
+
+    console.log(this.info)
   },
   computed: {
     cardTitle() {
@@ -50,6 +54,7 @@ export default {
   },
   methods: {
     currentDay: function() {
+      console.log(new Date())
       return new Date().toISOString().split('T')[0]
     }
   }

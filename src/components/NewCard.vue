@@ -17,7 +17,7 @@
         <v-spacer></v-spacer>
 
         <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+          <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
         </v-btn>
       </v-card-actions>
 
@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import Modal from '@/components/Modal'
+import Modal from "@/components/Modal";
 
 export default {
-  name: 'NewCard',
+  name: "NewCard",
   components: {
     Modal
   },
@@ -56,10 +56,10 @@ export default {
   },
   filters: {
     max40Letters(value) {
-      return value.slice(0, 60) + '...'
+      return value.slice(0, 60) + "...";
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
