@@ -1,6 +1,8 @@
 <template>
   <v-app>
     <Navbar />
+    <cookie-law theme="dark-lime"></cookie-law>
+
     <v-main>
       <router-view />
     </v-main>
@@ -8,17 +10,19 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
+import Navbar from './components/Navbar'
+import CookieLaw from 'vue-cookie-law'
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
-    Navbar
+    Navbar,
+    CookieLaw
   },
 
   data: () => ({
     //
   })
-};
+}
 </script>
